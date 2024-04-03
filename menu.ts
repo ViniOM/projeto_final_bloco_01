@@ -1,7 +1,13 @@
 const leia = require("readline-sync");
 
+import {Produto} from "./src/model/Produto"
+import {Material} from "./src/model/Material"
+ 
 export function menu() {
 
+  const m1: Material = new Material(1, "Material 1", 100, "Material 1", "01/01/2022")
+  const m2: Material = new Material(2, "Material 2", 200, "Material 2", "02/02/2022")
+  
   while(true) {
     console.log("********************************")
     console.log("* MENU *\n\n")
@@ -17,7 +23,9 @@ export function menu() {
   
     switch(opcao) {
       case 1:
-        console.log("Listando todos os produtos")
+        console.log("Listando todos os produtos\n\n")
+        m1.visualizar()
+        m2.visualizar()
         keyPress()
         break;
   

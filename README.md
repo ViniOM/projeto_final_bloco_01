@@ -7,7 +7,7 @@ A intenção era fazer um E-Commerce para demonstrar minhas habilidade usando **
 https://docs.google.com/document/d/1HZSjrneoRUXwPZme0wp1u8VwlEoxA06l/edit
 
 ## **Como Executar o Programa**
-Dê _**Git Clone**_ no repositório </br>
+Faça _**Download**_ do repositório </br>
 No console, Digite _**NPM INSTALL**_ (para baixar as dependencias)</br>
 Após, _**NPM START**_ (para rodar o programa)</br>
 

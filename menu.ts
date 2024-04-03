@@ -5,14 +5,14 @@ import {Produto} from "./src/model/Produto"
 import {Material} from "./src/model/Material"
 import {ProdutoController} from "./src/controller/ProdutoController"
  
-let id, nome, preco, descricao, validade, opcao = 0;
+let id, nome, preco, descricao, validade, opcao;
 
 export function menu() {
 
   const produtoController: ProdutoController = new ProdutoController()
 
   produtoController.cadastrar(new Material(produtoController.gerarId(), "Pedra", 5.50, "Pedra Grande", "Indefinido"))
-  produtoController.cadastrar(new Material(produtoController.gerarId(), "Pedra", 5.50, "Pedra Grande", "Indefinido"))
+  produtoController.cadastrar(new Material(produtoController.gerarId(), "Agua", 9.90, "Agua Fedida", "25/04/2025"))
 
   while(true) {
     console.log(`${Colors.fg.magentastrong}********************************`)

@@ -1,42 +1,53 @@
 const leia = require("readline-sync");
 
+import {Colors} from "./src/utils/Colors"
 import {Produto} from "./src/model/Produto"
 import {Material} from "./src/model/Material"
 import {ProdutoController} from "./src/controller/ProdutoController"
  
-let id, nome, preco, descricao, validade;
+let id, nome, preco, descricao, validade, opcao = 0;
 
 export function menu() {
 
   const produtoController: ProdutoController = new ProdutoController()
 
-  produtoController.cadastrar(new Material(produtoController.gerarId(), "Papel", 3.50, "Papel normal", "Indefinido"))
+  produtoController.cadastrar(new Material(produtoController.gerarId(), "Pedra", 5.50, "Pedra Grande", "Indefinido"))
   produtoController.cadastrar(new Material(produtoController.gerarId(), "Pedra", 5.50, "Pedra Grande", "Indefinido"))
 
   while(true) {
-    console.log("********************************")
-    console.log("* MENU *\n\n")
-    console.log("1- listar todos os produtos")
-    console.log("2- Listar Produto Pelo ID")
-    console.log("3- Cadastrar Produto")
-    console.log("4- Atualizar Produto")
-    console.log("5- Deletar Produto")
-    console.log("0- Sair")
-    console.log("\n********************************")
-    console.log("Escolha uma das opções acima: ")
-    const opcao = leia.questionInt("")
+    console.log(`${Colors.fg.magentastrong}********************************`)
+    console.log(`\n           E-Commerce          \n`)
+    console.log(`********************************${Colors.reset}`)
+      
+    console.log(Colors.fg.whitestrong,
+                "1- listar todos os produtos")
+    console.log(" 2- Listar Produto Pelo ID")
+    console.log(" 3- Cadastrar Produto")
+    console.log(" 4- Atualizar Produto")
+    console.log(" 5- Deletar Produto")
+    console.log(" 0- Sair")
+    console.log(`${Colors.fg.magentastrong}*********************************\n`)
+    console.log(`${Colors.fg.whitestrong}Escolha uma das opções ${Colors.fg.greenstrong}acima... ${Colors.reset}`)
+    opcao = leia.questionInt("")
     console.clear()
     switch(opcao) {
       case 1:
-        console.log("\n\nListando todos os produtos\n")
+        console.log(
+          `${Colors.fg.magentastrong}*********************************\n`)
+        console.log(Colors.fg.magentastrong,"   Listando todos os produtos", Colors.reset)
+        console.log(Colors.fg.magentastrong,
+          "\n*********************************\n", Colors.reset)
         produtoController.mostrarTodos()
         keyPress()
         break;
   
       case 2: 
-        console.log("Listando Pelo ID\n\n")
+        console.log(`${Colors.fg.magentastrong}********************************\n`)
+        console.log(`       Listando Pelo ID`)
+        console.log(`\n********************************${Colors.reset}`)
 
-        console.log("Qual o ID que deseja ver? ")
+
+        console.log(`${Colors.fg.whitestrong}\nQual o ID que deseja ${Colors.fg.greenstrong}VER? ${Colors.reset}`)
         id = leia.questionInt("")
         
         produtoController.selecionarPorId(id)
@@ -45,50 +56,53 @@ export function menu() {
         break;
   
       case 3: 
-        console.log("Cadastrar Produto")
+        console.log(`${Colors.fg.magentastrong}*********************************\n`)
+        console.log("         Cadastrar Produto")
+        console.log(`\n *********************************\n${Colors.reset}`)
+        console.log(`${Colors.fg.whitestrong}Qual o nome do produto? ${Colors.reset}`)
+        nome = leia.question(" ");
 
-        console.log("Qual o nome do produto? ")
-        nome = leia.question("")
+        console.log(`${Colors.fg.whitestrong}Qual o preço do produto? ${Colors.reset}`)
+        preco = leia.questionFloat(" ")
 
-        console.log("Qual o preco do produto? ")
-        preco = leia.questionFloat("")
+        console.log(`${Colors.fg.whitestrong}Qual a descrição do produto? ${Colors.reset}`)
+        descricao = leia.question(" ")
 
-        console.log("Qual a descrição do produto? ")
-        descricao = leia.question("")
-
-        console.log("Qual a validade do produto? ")
-        validade = leia.question("")
+        console.log(`${Colors.fg.whitestrong}Qual a validade do produto?${Colors.reset} `)
+        validade = leia.question(" ")
 
         produtoController.cadastrar(new Material(produtoController.gerarId(), nome, preco, descricao, validade))
         keyPress()
         break;
   
       case 4:
-        console.log("Atualizar Produto")
+        console.log(`${Colors.fg.magentastrong}*********************************\n`)
+        console.log("       Atualizar Produto")
+        console.log(`\n*********************************\n${Colors.reset}`)
+        console.log(`${Colors.fg.whitestrong}Qual o ID que deseja atualizar? ${Colors.reset}`)
+        id = leia.questionInt(" ")
 
-        console.log("Qual o ID que deseja atualizar? ")
-        id = leia.questionInt("")
+        console.log(`${Colors.fg.whitestrong}Qual o NOVO nome do produto? ${Colors.reset}`)
+        nome = leia.question(" ")
 
-        console.log("Qual o nome do produto? ")
-        nome = leia.question("")
+        console.log(`${Colors.fg.whitestrong}Qual o NOVO preço do produto? ${Colors.reset}`)
+        preco = leia.questionFloat(" ")
 
-        console.log("Qual o preco do produto? ")
-        preco = leia.questionFloat("")
+        console.log(`${Colors.fg.whitestrong}Qual a NOVA descrição do produto? ${Colors.reset}`)
+        descricao = leia.question(" ")
 
-        console.log("Qual a descrição do produto? ")
-        descricao = leia.question("")
-
-        console.log("Qual a validade do produto? ")
-        validade = leia.question("")
+        console.log(`${Colors.fg.whitestrong}Qual a NOVA validade do produto? ${Colors.reset}`)
+        validade = leia.question(" ")
 
         produtoController.atualizar(new Material(id, nome, preco, descricao, validade))
         keyPress()
         break;
   
       case 5:
-        console.log("Deletar Produto")
-
-        console.log("Qual o ID que deseja deletar? ")
+        console.log(`${Colors.fg.magentastrong}*********************************\n`)
+        console.log("       Deletar Produto")
+        console.log(`\n*********************************\n${Colors.reset}`)
+        console.log(`${Colors.fg.whitestrong}Qual ID que deseja deletar?${Colors.reset}`)
         id = leia.questionInt("")
 
         produtoController.deletar(id)
@@ -96,14 +110,15 @@ export function menu() {
         break;
   
       case 0:
-        console.log("Saindo...")
+        console.log(`${Colors.fg.whitestrong}\n\nPressione enter para ${Colors.fg.redstrong}SAIR...${Colors.reset}`);
+        leia.prompt();
         process.exit(0)
     }
   }
 }
 
 function keyPress(): void {
-  console.log("\n\nPressione enter para continuar...");
+  console.log(`${Colors.fg.whitestrong}\n\nPressione enter para ${Colors.fg.greenstrong}CONTINUAR...${Colors.reset}`);
   leia.prompt();
   console.clear()
 }

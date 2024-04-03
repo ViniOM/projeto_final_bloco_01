@@ -1,3 +1,5 @@
+import {Colors} from "../utils/Colors"
+
 export abstract class Produto {
   private _id: number
   private _nome: string
@@ -46,12 +48,12 @@ export abstract class Produto {
   }
 
   public visualizar(){
-    console.log("*************************")
-    console.log("Produto")
-    console.log("*************************")
-    console.log(`ID: ${this._id}`)
+    console.log(Colors.fg.greenstrong,"\n*************************")
+    console.log("         Produto")
+    console.log("*************************", Colors.reset)
+    console.log(`${Colors.fg.whitestrong}ID: ${this._id}`)
     console.log(`Nome: ${this._nome}`)
-    console.log(`Preço: R$ ${this._preco}`)
+    console.log(`Preço: R$ ${this._preco.toFixed(2)}`)
     console.log(`Descrição: ${this._descricao}`)
   }
 }

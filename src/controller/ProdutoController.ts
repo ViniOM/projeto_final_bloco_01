@@ -1,5 +1,6 @@
 import {Produto} from "../model/Produto"
 import {ProdutoRepository} from "../repository/ProdutoRepository"
+import {Colors} from "../utils/Colors"
 
 export class ProdutoController implements ProdutoRepository{
 
@@ -7,14 +8,19 @@ export class ProdutoController implements ProdutoRepository{
   public id = 0;
   
   mostrarTodos(): void {
-    for(let produto of this.listaProdutos) {
-      produto.visualizar()
+    if(this.listaProdutos.length == 0) {
+      console.log(`${Colors.fg.redstrong}\nO produto nao foi encontrado! ${Colors.reset}`)
+    }
+    else {
+      for(let produto of this.listaProdutos) {
+        produto.visualizar()
+      }
     }
   }
 
   cadastrar(produto: Produto): void {
     this.listaProdutos.push(produto)
-    console.log("Cadastrado com sucesso!")
+    console.log(`${Colors.fg.greenstrong}\nCadastrado com sucesso!${ Colors.reset}`)
   }
 
   atualizar(produto: Produto): void {
@@ -22,10 +28,10 @@ export class ProdutoController implements ProdutoRepository{
     
     if(busca !== null) {
       this.listaProdutos[this.listaProdutos.indexOf(busca)] = produto
-      console.log("Atualizado com sucesso!")
+      console.log(`${Colors.fg.greenstrong}\nAtualizado com sucesso!${ Colors.reset}`)
     }
     else {
-      console.log("O produto nao foi encontrado!")
+      console.log(`${Colors.fg.redstrong}\nO produto nao foi encontrado! ${Colors.reset}`)
     }
   }
 
@@ -34,10 +40,10 @@ export class ProdutoController implements ProdutoRepository{
     
     if(busca !== null) {
       this.listaProdutos.splice(this.listaProdutos.indexOf(busca), 1)
-      console.log("Deletado com sucesso!")
+      console.log(`${Colors.fg.greenstrong}\nDeletado com sucesso!${ Colors.reset}`)
     }
     else {
-      console.log("O produto nao foi encontrado!")
+      console.log(`${Colors.fg.redstrong}\nO produto nao foi encontrado! ${Colors.reset}`)
     }
   }
 
@@ -48,7 +54,7 @@ export class ProdutoController implements ProdutoRepository{
       busca.visualizar()
     }
     else {
-      console.log("O produto nao foi encontrado!")
+      console.log(`${Colors.fg.redstrong}\nO produto nao foi encontrado! ${Colors.reset}`)
     }
   }
 

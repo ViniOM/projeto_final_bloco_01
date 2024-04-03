@@ -1,0 +1,17 @@
+{
+  "dependencies": {
+    "@types/node": "^20.12.3",
+    "readline-sync": "^1.4.10",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.3"
+  },
+  "name": "y",
+  "description": "Enunciado: \r https://docs.google.com/document/d/1HZSjrneoRUXwPZme0wp1u8VwlEoxA06l/edit",
+  "version": "1.0.0",
+  "main": "menu.ts",
+  "scripts": {
+    "start": "ts-node menu.ts"
+  },
+  "author": "",
+  "license": "ISC"
+}

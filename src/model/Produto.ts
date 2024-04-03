@@ -51,7 +51,7 @@ export abstract class Produto {
     console.log("*************************")
     console.log(`ID: ${this._id}`)
     console.log(`Nome: ${this._nome}`)
-    console.log(`Preço: ${this._preco}`)
+    console.log(`Preço: R$ ${this._preco}`)
     console.log(`Descrição: ${this._descricao}`)
   }
 }

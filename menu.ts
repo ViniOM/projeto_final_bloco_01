@@ -59,6 +59,7 @@ export function menu() {
 function keyPress(): void {
   console.log("\n\nPressione enter para continuar...");
   leia.prompt();
+  console.clear()
 }
 
 menu()
